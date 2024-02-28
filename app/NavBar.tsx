@@ -7,10 +7,8 @@ import { AiFillBug } from "react-icons/ai";
 import classnames from 'classnames';
 
 
-
 const NavBar = () => {
     const currentPath = usePathname();
-
 
     const links = [
         { label: 'Dashboard', href: '/' },
