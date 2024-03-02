@@ -11,11 +11,13 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const validation = createIssueSchema.safeParse(body)
 
-    console.log('Testing:', validation)
+    console.log('Testing Body:', body)
+    console.log('Testing validation:', validation)
 
-    if (!validation.success)
-        return NextResponse.json(validation.error.errors, { status: 400 });
+    if (!validation.success) {
         console.log('Fail:', validation)
+        return NextResponse.json(validation.error.errors, { status: 400 });
+    }
 
     const newIssue = await prisma.issue.create({
         data: { title: body.title, description: body.description }
